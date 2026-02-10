@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Notification de Domaine</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Work+Sans:wght@300;400;600&display=swap");
+
+            :root {
+                --bg-1: #f2efe9;
+                --bg-2: #f7f3ee;
+                --ink: #1f1d1a;
+                --muted: #5b5a57;
+                --accent: #b58a4f;
+                --error: #b54131;
+                --card: #ffffff;
+                --shadow: 0 30px 80px rgba(22, 22, 22, 0.15);
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                min-height: 100vh;
+                font-family:
+                    "Work Sans",
+                    system-ui,
+                    -apple-system,
+                    sans-serif;
+                color: var(--ink);
+                background:
+                    radial-gradient(
+                        1200px 500px at 15% -10%,
+                        #e2d7c9 0%,
+                        transparent 60%
+                    ),
+                    radial-gradient(
+                        1000px 600px at 95% 20%,
+                        #d7c0a1 0%,
+                        transparent 55%
+                    ),
+                    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+                display: grid;
+                place-items: center;
+                padding: 48px 20px;
+            }
+
+            .shell {
+                max-width: 960px;
+                width: 100%;
+                display: grid;
+                gap: 24px;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+
+            .brand {
+                font-family: "Cinzel", serif;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                font-size: 0.95rem;
+                color: var(--accent);
+            }
+
+            .stamp {
+                border: 1px solid rgba(181, 138, 79, 0.4);
+                color: var(--accent);
+                padding: 10px 18px;
+                border-radius: 999px;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                background: rgba(255, 255, 255, 0.6);
+            }
+
+            .panel {
+                background: var(--card);
+                border-radius: 24px;
+                padding: 36px;
+                box-shadow: var(--shadow);
+                position: relative;
+                overflow: hidden;
+                animation: rise 700ms ease-out;
+            }
+
+            .panel::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    120deg,
+                    rgba(181, 138, 79, 0.12),
+                    transparent 55%
+                );
+                pointer-events: none;
+            }
+
+            h1 {
+                font-family: "Cinzel", serif;
+                font-size: clamp(2rem, 3vw, 2.75rem);
+                margin: 0 0 12px;
+            }
+
+            p {
+                margin: 0;
+                color: var(--muted);
+                line-height: 1.7;
+                font-size: 1.05rem;
+            }
+
+            .error {
+                margin-top: 28px;
+                padding: 20px 24px;
+                border-radius: 16px;
+                border: 1px solid rgba(181, 65, 49, 0.3);
+                background: rgba(181, 65, 49, 0.08);
+                color: var(--error);
+                font-weight: 600;
+                font-size: 1.05rem;
+                line-height: 1.6;
+            }
+
+            .meta {
+                display: grid;
+                gap: 12px;
+                margin-top: 26px;
+                font-size: 0.95rem;
+                color: var(--muted);
+            }
+
+            .meta strong {
+                color: var(--ink);
+            }
+
+            .divider {
+                height: 1px;
+                background: linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(0, 0, 0, 0.18),
+                    transparent
+                );
+                margin: 30px 0;
+            }
+
+            .cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                padding: 14px 22px;
+                border-radius: 999px;
+                background: var(--ink);
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                font-size: 0.85rem;
+                transition:
+                    transform 200ms ease,
+                    box-shadow 200ms ease;
+                margin-top: 22px;
+            }
+
+            .cta:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+            }
+
+            @keyframes rise {
+                from {
+                    opacity: 0;
+                    transform: translateY(16px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @media (max-width: 720px) {
+                .panel {
+                    padding: 28px 24px;
+                }
+                .header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="shell">
+            <div class="header">
+                <div class="brand">Gestion Domaine</div>
+                <div class="stamp">Alerte Active</div>
+            </div>
+
+            <section class="panel">
+                <h1>Notification importante</h1>
+                <p>
+                    Nous avons detecte un statut a verifier pour votre presence
+                    en ligne. Merci de traiter la demande ci-dessous pour eviter
+                    toute interruption de service.
+                </p>
+
+                <div class="error">
+                    votre site est en lige mais lus sur le nom de domaine
+                    'https://www.congominingcorporationsolution.org/' pensez a
+                    renouveller votre abbonement a ce ONLY DOMAINS pour cenom de
+                    domaine
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="meta">
+                    <div>
+                        <strong>Reference :</strong> Audit de domaine
+                        automatique
+                    </div>
+                    <div><strong>Priorite :</strong> Elevee</div>
+                    <div>
+                        <strong>Action :</strong> Confirmer le renouvellement et
+                        la facturation associee
+                    </div>
+                </div>
+
+                <a class="cta" href="#">Demarrer la verification</a>
+            </section>
+        </main>
+    </body>
+</html>
